@@ -32,7 +32,10 @@
     padding-left: max(16px, env(safe-area-inset-left, 0px));
     padding-right: max(16px, env(safe-area-inset-right, 0px));
   }
-  .wrap { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .wrap { --sw: min(100%, calc((100vh - 170px) * 16 / 9)); max-width: 2000px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  @supports (height: 100dvh) { .wrap { --sw: min(100%, calc((100dvh - 170px) * 16 / 9)); } }
+  .wrap > .top, .wrap > .stage, .wrap > .pad, .wrap > .keys { width: max(var(--sw), min(100%, 640px)); margin-inline: auto; box-sizing: border-box; }
+  .wrap > .tour { width: min(100%, 1000px); margin-inline: auto; }
   .top { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px 22px; }
   h1 { margin: 0; font: 900 clamp(26px, 5vw, 36px)/1 var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; }
   .hud { display: flex; justify-content: center; min-width: 0; }
